@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="svn://139.129.28.14/project" key="RepositorySelectionPage.lastRepository"/>
+	<item value="" key="DirectorySelectionPage.lastParent_svn://139.129.28.14/project"/>
+	<item value="" key="DirectorySelectionPage.lastParent_http://192.168.110.97/svn/GN_PayServer"/>
+	<section name="NewLocationWizard">
+		<list key="ConfigurationWizardMainPage.STORE_URL_ID">
+			<item value="svn://139.129.28.14/project"/>
+		</list>
+	</section>
+</section>

@@ -1,0 +1,28 @@
+.table .btn {
+    padding: 3px 6px;
+    font-size: 14px;
+}
+
+.table thead tr th {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 4px!important;
+}
+
+.table > tbody > tr.active_tr {
+    background: rgba(74, 141, 249, 0.68) !important;
+    color: #fff !important;
+}
+
+table.dataTable.fixedHeader-floating .table-checkbox {
+    width: 23px !important;
+    min-width: 23px !important;
+}
+
+
+.fixedHeader-floating{
+    top: 46px;
+}

@@ -1,0 +1,21 @@
+package com.project.xxx.core.dao;
+
+import java.util.List;
+
+import com.project.xxx.core.models.User;
+
+public interface PassengerMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    User selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
+    
+    List<User> selectAllData();
+}

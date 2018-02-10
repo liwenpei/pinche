@@ -1,0 +1,30 @@
+package com.project.xxx.controller;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.project.xxx.core.IUserService;
+import com.project.xxx.core.models.User;
+
+@Controller
+@RequestMapping("/user")
+public class UserController {
+	Logger log = LoggerFactory.getLogger(getClass());
+	@Resource
+	private IUserService userService;
+	
+	@RequestMapping(prefix + "showUser")
+	public String toIndex(HttpServletRequest request,Model model){
+		int userId = Integer.parseInt(request.getParameter("id"));
+		User user = this.userService.getUserById(userId);
+		model.addAttribute("user", user);
+		return "showUser";
+	}
+}
+

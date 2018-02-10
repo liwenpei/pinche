@@ -1,0 +1,19 @@
+/**
+ * 
+ */
+/**
+ * @author Administrator
+ *
+ */
+package com.project.xxx.common;
+
+public class Convert{
+	public static boolean objToBoolean(Object obj){
+		boolean rntValue = false;
+		try{
+			rntValue = Boolean.parseBoolean(obj.toString());
+		}catch(Exception e){}
+		
+		return rntValue;
+	}
+}

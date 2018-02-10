@@ -1,0 +1,39 @@
+1517801750921	Move 'uploadFile.jsp' to 'webapp'
+1517804873383	Copy file
+1517804882133	Rename resource 'index.jsp'
+1517811817194	Rename resource 'sucess.jsp'
+1517812230304	Rename resource 'paramTest.html'
+1517813458855	Move compilation unit
+1517813642958	Rename package 'com.project.xxx.common.transactionmap'
+1517813690844	Move compilation unit
+1517814358928	Delete element
+1517820957604	Delete elements
+1517888103193	Copy compilation unit
+1517896841716	Delete element
+1517896922458	Move 'include' to 'webapp'
+1517896997490	Copy files
+1517909489047	Copy compilation unit
+1517909650887	Copy compilation unit
+1517911577975	Rename type 'Home'
+1517911595574	Rename type 'LoginContoller'
+1517968139816	Rename resource 'logo.png'
+1517968431721	Copy folder
+1517974535441	Delete element
+1517977689048	Delete elements
+1518158192796	Copy compilation unit
+1518158355889	Delete element
+1518158375887	Delete element
+1518168735915	Rename type 'UserController'
+1518168764679	Rename resource 'user.jsp'
+1518168821031	Rename type 'IUserService'
+1518168839934	Rename type 'UserMapper'
+1518168930194	Rename resource 'UserMapper.xml'
+1518169001475	Rename type 'User'
+1518169193705	Rename type 'UserServiceImpl'
+1518227958289	Rename type 'HomeController'
+1518227979469	Rename resource 'home.jsp'
+1518228377099	Rename resource 'buscard.js'
+1518228650742	Rename resource 'pinche.js'
+1518228915194	Move 'publish' to 'js'
+1518229007608	Move 'js' to 'webapp'
+1518231875977	Rename type 'Convert'

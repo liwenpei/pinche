@@ -1,0 +1,12 @@
+a,a:hover{text-decoration: none;}
+.form-group{ padding:0;}
+.control-label{ margin-top:6px; padding:0; padding-left:5px;}
+.page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li .dropdown-menu li > a > i{ margin-right:5px;}
+.page-sidebar .page-sidebar-menu .sub-menu > li > a > i[class*="icon-"]{margin-right:5px;}
+.page-sidebar .page-sidebar-menu .sub-menu > li > a > i[class*="fa-"]{margin-right:5px;}
+ .page-header.navbar .page-logo > .logo-default{ font-size:15px;height: 46px; display:block; line-height:46px; margin-top:0; color:#FF6A00; background:url('../img/logo.png') no-repeat;  padding-left: 40px; background-position: 0 8px;}
+.page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.active > a > i{ color: #fff; margin-right: 5px;}
+.page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li > a > i{margin-right: 5px;}
+.page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.active:hover  > a > i{ color: #fff;}
+.err-info{    color: #a94442;display: block;    font-size: 13px;
+    direction: ltr;}

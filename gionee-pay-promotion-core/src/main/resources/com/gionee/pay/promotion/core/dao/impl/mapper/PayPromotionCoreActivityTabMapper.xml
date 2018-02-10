@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gionee.pay.promotion.core.dao.mapper.PayPromotionCoreActivityTabMapper">
+  <resultMap id="BaseResultMap" type="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreActivityTab">
+    <id column="activity_no" jdbcType="VARCHAR" property="activity_no" />
+    <result column="gift_type" jdbcType="VARCHAR" property="gift_type" />
+    <result column="service_type" jdbcType="VARCHAR" property="service_type" />
+    <result column="pay_channel" jdbcType="VARCHAR" property="pay_channel" />
+    <result column="is_fixed_amt" jdbcType="VARCHAR" property="is_fixed_amt" />
+    <result column="activity_name" jdbcType="VARCHAR" property="activity_name" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="sponsor" jdbcType="VARCHAR" property="sponsor" />
+    <result column="budget" jdbcType="DECIMAL" property="budget" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="limited_quantity" jdbcType="INTEGER" property="limited_quantity" />
+    <result column="platform_type" jdbcType="VARCHAR" property="platform_type" />
+    <result column="app_id" jdbcType="VARCHAR" property="app_id" />
+    <result column="scene" jdbcType="VARCHAR" property="scene" />
+    <result column="rule_type" jdbcType="VARCHAR" property="rule_type" />
+    <result column="rule_param" jdbcType="VARCHAR" property="rule_param" />
+    <result column="logo_url" jdbcType="VARCHAR" property="logo_url" />
+    <result column="wish_desc" jdbcType="VARCHAR" property="wish_desc" />
+    <result column="share_desc" jdbcType="VARCHAR" property="share_desc" />
+    <result column="share_statement" jdbcType="VARCHAR" property="share_statement" />
+    <result column="share_pic_url" jdbcType="VARCHAR" property="share_pic_url" />
+    <result column="share_url" jdbcType="VARCHAR" property="share_url" />
+    
+    <result column="effc_time" jdbcType="TIMESTAMP" property="effc_time" />
+    <result column="expired_time" jdbcType="TIMESTAMP" property="expired_time" />
+    
+    <result column="ceate_date" jdbcType="DATE" property="ceate_date" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="last_upd_time" jdbcType="TIMESTAMP" property="last_upd_time" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="auditor" jdbcType="VARCHAR" property="auditor" />
+    
+    <result column="activity_desc" jdbcType="VARCHAR" property="activity_desc" />
+    
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    
+  </resultMap>
+  <sql id="Base_Column_List">
+    activity_no, gift_type, service_type, pay_channel, is_fixed_amt, activity_name, status, 
+    sponsor, budget, quantity, limited_quantity, platform_type, app_id, scene, rule_type, 
+    rule_param, logo_url, wish_desc, share_desc,share_statement, share_pic_url, share_url,effc_time, expired_time,ceate_date, 
+    create_time, last_upd_time, operator, auditor,activity_desc,mark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_promotion_core_activity_tab
+    where activity_no = #{activity_no,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from pay_promotion_core_activity_tab
+    where activity_no = #{activity_no,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreActivityTab">
+    insert into pay_promotion_core_activity_tab (activity_no, gift_type, service_type, 
+      pay_channel, is_fixed_amt, activity_name, 
+      status, sponsor, budget, 
+      quantity, limited_quantity, platform_type, 
+      app_id, scene, rule_type, 
+      rule_param, logo_url, wish_desc,share_desc, 
+      share_statement, share_pic_url, share_url, 
+      effc_time, expired_time,ceate_date, create_time, last_upd_time, 
+      operator, auditor,activity_desc,mark)
+    values (#{activity_no,jdbcType=VARCHAR}, #{gift_type,jdbcType=VARCHAR}, #{service_type,jdbcType=VARCHAR}, 
+      #{pay_channel,jdbcType=VARCHAR}, #{is_fixed_amt,jdbcType=VARCHAR}, #{activity_name,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{sponsor,jdbcType=VARCHAR}, #{budget,jdbcType=DECIMAL}, 
+      #{quantity,jdbcType=INTEGER}, #{limited_quantity,jdbcType=INTEGER}, #{platform_type,jdbcType=VARCHAR}, 
+      #{app_id,jdbcType=VARCHAR}, #{scene,jdbcType=VARCHAR}, #{rule_type,jdbcType=VARCHAR}, 
+      #{rule_param,jdbcType=VARCHAR}, #{logo_url,jdbcType=VARCHAR}, #{wish_desc,jdbcType=VARCHAR}, 
+      #{share_desc,jdbcType=VARCHAR},
+      #{share_statement,jdbcType=VARCHAR}, #{share_pic_url,jdbcType=VARCHAR}, #{share_url,jdbcType=VARCHAR}, 
+      #{effc_time,jdbcType=TIMESTAMP}, #{expired_time,jdbcType=TIMESTAMP},
+      #{ceate_date,jdbcType=DATE}, #{create_time,jdbcType=TIMESTAMP}, #{last_upd_time,jdbcType=TIMESTAMP}, 
+      #{operator,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR},
+      #{activity_desc,jdbcType=VARCHAR},
+      #{mark,jdbcType=VARCHAR}
+      
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreActivityTab">
+    insert into pay_promotion_core_activity_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="activity_no != null">
+        activity_no,
+      </if>
+      <if test="gift_type != null">
+        gift_type,
+      </if>
+      <if test="service_type != null">
+        service_type,
+      </if>
+      <if test="pay_channel != null">
+        pay_channel,
+      </if>
+      <if test="is_fixed_amt != null">
+        is_fixed_amt,
+      </if>
+      <if test="activity_name != null">
+        activity_name,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="sponsor != null">
+        sponsor,
+      </if>
+      <if test="budget != null">
+        budget,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="limited_quantity != null">
+        limited_quantity,
+      </if>
+      <if test="platform_type != null">
+        platform_type,
+      </if>
+      <if test="app_id != null">
+        app_id,
+      </if>
+      <if test="scene != null">
+        scene,
+      </if>
+      <if test="rule_type != null">
+        rule_type,
+      </if>
+      <if test="rule_param != null">
+        rule_param,
+      </if>
+      <if test="logo_url != null">
+        logo_url,
+      </if>
+      <if test="wish_desc != null">
+        wish_desc,
+      </if>
+      <if test="share_desc != null">
+        share_desc,
+      </if>
+      <if test="share_statement != null">
+        share_statement,
+      </if>
+      <if test="share_pic_url != null">
+        share_pic_url,
+      </if>
+      <if test="share_url != null">
+        share_url,
+      </if>
+      
+      <if test="effc_time != null">
+        effc_time,
+      </if>
+      <if test="expired_time != null">
+        expired_time,
+      </if>
+      
+      
+      <if test="ceate_date != null">
+        ceate_date,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="last_upd_time != null">
+        last_upd_time,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="auditor != null">
+        auditor,
+      </if>
+      
+      <if test="activity_desc != null">
+        activity_desc,
+      </if>
+      
+      <if test="mark != null">
+        mark,
+      </if>
+      
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="activity_no != null">
+        #{activity_no,jdbcType=VARCHAR},
+      </if>
+      <if test="gift_type != null">
+        #{gift_type,jdbcType=VARCHAR},
+      </if>
+      <if test="service_type != null">
+        #{service_type,jdbcType=VARCHAR},
+      </if>
+      <if test="pay_channel != null">
+        #{pay_channel,jdbcType=VARCHAR},
+      </if>
+      <if test="is_fixed_amt != null">
+        #{is_fixed_amt,jdbcType=VARCHAR},
+      </if>
+      <if test="activity_name != null">
+        #{activity_name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsor != null">
+        #{sponsor,jdbcType=VARCHAR},
+      </if>
+      <if test="budget != null">
+        #{budget,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="limited_quantity != null">
+        #{limited_quantity,jdbcType=INTEGER},
+      </if>
+      <if test="platform_type != null">
+        #{platform_type,jdbcType=VARCHAR},
+      </if>
+      <if test="app_id != null">
+        #{app_id,jdbcType=VARCHAR},
+      </if>
+      <if test="scene != null">
+        #{scene,jdbcType=VARCHAR},
+      </if>
+      <if test="rule_type != null">
+        #{rule_type,jdbcType=VARCHAR},
+      </if>
+      <if test="rule_param != null">
+        #{rule_param,jdbcType=VARCHAR},
+      </if>
+      <if test="logo_url != null">
+        #{logo_url,jdbcType=VARCHAR},
+      </if>
+      <if test="wish_desc != null">
+        #{wish_desc,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="share_desc != null">
+        #{share_desc,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="share_statement != null">
+        #{share_statement,jdbcType=VARCHAR},
+      </if>
+      <if test="share_pic_url != null">
+        #{share_pic_url,jdbcType=VARCHAR},
+      </if>
+      <if test="share_url != null">
+        #{share_url,jdbcType=VARCHAR},
+      </if>
+      
+      
+      
+      <if test="effc_time != null">
+        #{effc_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expired_time != null">
+        #{expired_time,jdbcType=TIMESTAMP},
+      </if>
+      
+      <if test="ceate_date != null">
+        #{ceate_date,jdbcType=DATE},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_upd_time != null">
+        #{last_upd_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null">
+        #{auditor,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="activity_desc != null">
+        #{activity_desc,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreActivityTab">
+    update pay_promotion_core_activity_tab
+    <set>
+      <if test="gift_type != null">
+        gift_type = #{gift_type,jdbcType=VARCHAR},
+      </if>
+      <if test="service_type != null">
+        service_type = #{service_type,jdbcType=VARCHAR},
+      </if>
+      <if test="pay_channel != null">
+        pay_channel = #{pay_channel,jdbcType=VARCHAR},
+      </if>
+      <if test="is_fixed_amt != null">
+        is_fixed_amt = #{is_fixed_amt,jdbcType=VARCHAR},
+      </if>
+      <if test="activity_name != null">
+        activity_name = #{activity_name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsor != null">
+        sponsor = #{sponsor,jdbcType=VARCHAR},
+      </if>
+      <if test="budget != null">
+        budget = #{budget,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="limited_quantity != null">
+        limited_quantity = #{limited_quantity,jdbcType=INTEGER},
+      </if>
+      <if test="platform_type != null">
+        platform_type = #{platform_type,jdbcType=VARCHAR},
+      </if>
+      <if test="app_id != null">
+        app_id = #{app_id,jdbcType=VARCHAR},
+      </if>
+      <if test="scene != null">
+        scene = #{scene,jdbcType=VARCHAR},
+      </if>
+      <if test="rule_type != null">
+        rule_type = #{rule_type,jdbcType=VARCHAR},
+      </if>
+      <if test="rule_param != null">
+        rule_param = #{rule_param,jdbcType=VARCHAR},
+      </if>
+      <if test="logo_url != null">
+        logo_url = #{logo_url,jdbcType=VARCHAR},
+      </if>
+      <if test="wish_desc != null">
+        wish_desc = #{wish_desc,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="share_desc != null">
+        share_desc = #{share_desc,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="share_statement != null">
+        share_statement = #{share_statement,jdbcType=VARCHAR},
+      </if>
+      <if test="share_pic_url != null">
+        share_pic_url = #{share_pic_url,jdbcType=VARCHAR},
+      </if>
+      <if test="share_url != null">
+        share_url = #{share_url,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="effc_time != null">
+        effc_time = #{effc_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expired_time != null">
+        expired_time = #{expired_time,jdbcType=TIMESTAMP},
+      </if>
+      
+      
+      <if test="ceate_date != null">
+        ceate_date = #{ceate_date,jdbcType=DATE},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_upd_time != null">
+        last_upd_time = #{last_upd_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null">
+        auditor = #{auditor,jdbcType=VARCHAR},
+      </if>
+      
+      
+      <if test="activity_desc != null">
+        activity_desc = #{activity_desc,jdbcType=VARCHAR},
+      </if>
+      
+      
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      
+    </set>
+    where activity_no = #{activity_no,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreActivityTab">
+    update pay_promotion_core_activity_tab
+    set gift_type = #{gift_type,jdbcType=VARCHAR},
+      service_type = #{service_type,jdbcType=VARCHAR},
+      pay_channel = #{pay_channel,jdbcType=VARCHAR},
+      is_fixed_amt = #{is_fixed_amt,jdbcType=VARCHAR},
+      activity_name = #{activity_name,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      sponsor = #{sponsor,jdbcType=VARCHAR},
+      budget = #{budget,jdbcType=DECIMAL},
+      quantity = #{quantity,jdbcType=INTEGER},
+      limited_quantity = #{limited_quantity,jdbcType=INTEGER},
+      platform_type = #{platform_type,jdbcType=VARCHAR},
+      app_id = #{app_id,jdbcType=VARCHAR},
+      scene = #{scene,jdbcType=VARCHAR},
+      rule_type = #{rule_type,jdbcType=VARCHAR},
+      rule_param = #{rule_param,jdbcType=VARCHAR},
+      logo_url = #{logo_url,jdbcType=VARCHAR},
+      wish_desc = #{wish_desc,jdbcType=VARCHAR},
+      
+      share_desc = #{share_desc,jdbcType=VARCHAR},
+      
+      share_statement = #{share_statement,jdbcType=VARCHAR},
+      share_pic_url = #{share_pic_url,jdbcType=VARCHAR},
+      share_url = #{share_url,jdbcType=VARCHAR},
+      
+      
+      effc_time = #{effc_time,jdbcType=TIMESTAMP},
+      expired_time = #{expired_time,jdbcType=TIMESTAMP},
+      
+      
+      ceate_date = #{ceate_date,jdbcType=DATE},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      last_upd_time = #{last_upd_time,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      auditor = #{auditor,jdbcType=VARCHAR},
+      
+      activity_desc = #{activity_desc,jdbcType=VARCHAR},
+      
+      mark = #{mark,jdbcType=VARCHAR}
+      
+    where activity_no = #{activity_no,jdbcType=VARCHAR}
+  </update>
+  
+     <select id="selectValueByAllParams" resultType="list"
+	resultMap="BaseResultMap" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreActivityTab">
+	select 
+	<include refid="Base_Column_List" />
+        from  pay_promotion_core_activity_tab 
+        where 1=1 and   <![CDATA[now() >= effc_time and now() <=  expired_time]]>
+      
+      
+        <if test="activity_no != null">
+        and activity_no = #{activity_no,jdbcType=VARCHAR}
+        </if>
+        <if test="gift_type != null">
+        and gift_type = #{gift_type,jdbcType=VARCHAR}
+      </if>
+      <if test="service_type != null">
+        and service_type = #{service_type,jdbcType=VARCHAR}
+      </if>
+      <if test="pay_channel != null">
+        and pay_channel = #{pay_channel,jdbcType=VARCHAR}
+      </if>
+      <if test="is_fixed_amt != null">
+        and is_fixed_amt = #{is_fixed_amt,jdbcType=VARCHAR}
+      </if>
+      <if test="activity_name != null">
+        and activity_name = #{activity_name,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        and status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="max_status != null and  min_status!=null and status == null">
+        and status <![CDATA[>=]]> #{min_status,jdbcType=VARCHAR} and  status <![CDATA[<=]]> #{max_status,jdbcType=VARCHAR}
+      </if>
+      <if test="sponsor != null">
+       and  sponsor = #{sponsor,jdbcType=VARCHAR}
+      </if>
+      <if test="budget != null">
+        and budget = #{budget,jdbcType=DECIMAL}
+      </if>
+      <if test="quantity != null">
+        and quantity = #{quantity,jdbcType=INTEGER}
+      </if>
+      <if test="limited_quantity != null">
+        and limited_quantity = #{limited_quantity,jdbcType=INTEGER}
+      </if>
+      <if test="platform_type != null">
+        and platform_type = #{platform_type,jdbcType=VARCHAR}
+      </if>
+      <if test="app_id != null">
+        and app_id  like concat('%', #{app_id,jdbcType=VARCHAR}, '%') 
+      </if>
+      <if test="scene != null">
+       and  scene = #{scene,jdbcType=VARCHAR}
+      </if>
+      <if test="rule_type != null">
+        and rule_type = #{rule_type,jdbcType=VARCHAR}
+      </if>
+      <if test="rule_param != null">
+        and rule_param = #{rule_param,jdbcType=VARCHAR}
+      </if>
+      <if test="logo_url != null">
+        and logo_url = #{logo_url,jdbcType=VARCHAR}
+      </if>
+      <if test="wish_desc != null">
+       and  wish_desc = #{wish_desc,jdbcType=VARCHAR}
+      </if>
+      
+      <if test="share_desc != null">
+        and share_desc = #{share_desc,jdbcType=VARCHAR}
+      </if>
+      
+      <if test="share_statement != null">
+        and share_statement = #{share_statement,jdbcType=VARCHAR}
+      </if>
+      <if test="share_pic_url != null">
+       and  share_pic_url = #{share_pic_url,jdbcType=VARCHAR}
+      </if>
+      <if test="share_url != null">
+        and share_url = #{share_url,jdbcType=VARCHAR}
+      </if>
+      <if test="ceate_date != null">
+       and  ceate_date = #{ceate_date,jdbcType=DATE}
+      </if>
+      <if test="create_time != null">
+        and create_time = #{create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="last_upd_time != null">
+       and  last_upd_time = #{last_upd_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operator != null">
+       and  operator = #{operator,jdbcType=VARCHAR}
+      </if>
+      <if test="auditor != null">
+       and  auditor = #{auditor,jdbcType=VARCHAR}
+      </if>
+      
+      
+      <if test="activity_desc != null">
+       and  activity_desc = #{activity_desc,jdbcType=VARCHAR}
+      </if>
+      
+      <if test="mark != null">
+       and  mark = #{mark,jdbcType=VARCHAR}
+      </if>
+      
+    </select>
+    
+   <select id="selectByAllParams" resultType="list"
+	resultMap="BaseResultMap" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreActivityTab">
+	select 
+	<include refid="Base_Column_List" />
+        from  pay_promotion_core_activity_tab 
+        where 1=1
+        <if test="activity_no != null">
+        and activity_no = #{activity_no,jdbcType=VARCHAR}
+        </if>
+        <if test="gift_type != null">
+        and gift_type = #{gift_type,jdbcType=VARCHAR}
+      </if>
+      <if test="service_type != null">
+        and service_type = #{service_type,jdbcType=VARCHAR}
+      </if>
+      <if test="pay_channel != null">
+        and pay_channel = #{pay_channel,jdbcType=VARCHAR}
+      </if>
+      <if test="is_fixed_amt != null">
+        and is_fixed_amt = #{is_fixed_amt,jdbcType=VARCHAR}
+      </if>
+      <if test="activity_name != null">
+        and activity_name = #{activity_name,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        and status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="sponsor != null">
+       and  sponsor = #{sponsor,jdbcType=VARCHAR}
+      </if>
+      <if test="budget != null">
+        and budget = #{budget,jdbcType=DECIMAL}
+      </if>
+      <if test="quantity != null">
+        and quantity = #{quantity,jdbcType=INTEGER}
+      </if>
+      <if test="limited_quantity != null">
+        and limited_quantity = #{limited_quantity,jdbcType=INTEGER}
+      </if>
+      <if test="platform_type != null">
+        and platform_type = #{platform_type,jdbcType=VARCHAR}
+      </if>
+      <if test="app_id != null">
+        and app_id  like concat('%', #{app_id,jdbcType=VARCHAR}, '%') 
+      </if>
+      <if test="scene != null">
+       and  scene = #{scene,jdbcType=VARCHAR}
+      </if>
+      <if test="rule_type != null">
+        and rule_type = #{rule_type,jdbcType=VARCHAR}
+      </if>
+      <if test="rule_param != null">
+        and rule_param = #{rule_param,jdbcType=VARCHAR}
+      </if>
+      <if test="logo_url != null">
+        and logo_url = #{logo_url,jdbcType=VARCHAR}
+      </if>
+      <if test="wish_desc != null">
+       and  wish_desc = #{wish_desc,jdbcType=VARCHAR}
+      </if>
+      
+      <if test="share_desc != null">
+        and share_desc = #{share_desc,jdbcType=VARCHAR}
+      </if>
+      
+      <if test="share_statement != null">
+        and share_statement = #{share_statement,jdbcType=VARCHAR}
+      </if>
+      <if test="share_pic_url != null">
+       and  share_pic_url = #{share_pic_url,jdbcType=VARCHAR}
+      </if>
+      <if test="share_url != null">
+        and share_url = #{share_url,jdbcType=VARCHAR}
+      </if>
+      
+      
+      
+      <if test="effc_time != null">
+        and effc_time = #{effc_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="expired_time != null">
+        and expired_time = #{expired_time,jdbcType=TIMESTAMP}
+      </if>
+      
+      <if test="ceate_date != null">
+       and  ceate_date = #{ceate_date,jdbcType=DATE}
+      </if>
+      <if test="create_time != null">
+        and create_time = #{create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="last_upd_time != null">
+       and  last_upd_time = #{last_upd_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operator != null">
+       and  operator = #{operator,jdbcType=VARCHAR}
+      </if>
+      <if test="auditor != null">
+       and  auditor = #{auditor,jdbcType=VARCHAR}
+      </if>
+      
+      
+      <if test="activity_desc != null">
+       and  activity_desc = #{activity_desc,jdbcType=VARCHAR}
+      </if>
+      
+      <if test="mark != null">
+       and  mark = #{mark,jdbcType=VARCHAR}
+      </if>
+      
+      
+    </select>
+  
+</mapper>

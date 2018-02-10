@@ -1,0 +1,57 @@
+package com.project.xxx.controller;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.project.xxx.core.IManagerService;
+import com.project.xxx.core.models.Manager;
+
+@Controller
+public class LoginContoller {
+	@Resource
+	private IManagerService managerService;
+	
+	@RequestMapping(value = "login.do", method = RequestMethod.POST)
+	public String login(HttpServletRequest request,Model model) {
+		System.out.println("1");
+		Map<String, String> parmMap = new HashMap<String, String>();
+		// 方式一：getParameterMap()，获得请求参数map
+		Map<String, String[]> map = request.getParameterMap();
+		// 参数名称
+		Set<String> key = map.keySet();
+		// 参数迭代器
+		Iterator<String> iterator = key.iterator();
+		while (iterator.hasNext()) {
+			String k = iterator.next();
+			parmMap.put(k, map.get(k)[0]);
+		}
+		String userId = request.getParameter("user_id");
+		String password = request.getParameter("password");
+		System.out.println(userId);
+		System.out.println(password);
+		userId = parmMap.get("user_id");
+		password = parmMap.get("password");
+		System.out.println(userId);
+		System.out.println(password);
+		Manager manager = this.managerService.getManager(userId, password);
+		
+		model.addAttribute("user", manager);
+		System.out.println("parmMap=====" + parmMap.toString());
+		if(manager != null){
+			return "ok";	
+		}else{
+			return "no";
+		}
+		
+	}
+}

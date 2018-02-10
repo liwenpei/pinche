@@ -1,0 +1,20 @@
+package com.project.xxx.core.impl; 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import com.project.xxx.core.IUserService;
+import com.project.xxx.core.dao.UserMapper;
+import com.project.xxx.core.models.User;  
+  
+@Service("userService")
+@Component
+public class ManagerServiceImpl implements IUserService {  
+    @Resource  
+    private UserMapper userMapper;
+    
+	public User getUserById(int userId) {
+		return this.userMapper.selectByPrimaryKey(userId);
+	}  
+} 

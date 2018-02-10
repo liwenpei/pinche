@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" 
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs" 
+	xmlns:cxf="http://cxf.apache.org/core"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+			http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+    		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+	
+	<context:component-scan
+		base-package="com.gionee.pay.promotion.core.action,com.gionee.pay.promotion.core.service,com.gionee.pay.promotion.core.sao,service,com.gionee.pay.promotion.core.dao,com,gionne.pay.promotion.core.job,com.gionee.web.filter" />
+	
+
+	<task:annotation-driven/> 
+	<aop:aspectj-autoproxy/>
+	<util:properties id="promotion_core_config"  		location="classpath:promotion_core_config.properties" />
+	<util:properties id="sms_config"  				    location="classpath:sms_config.properties" />
+	<util:properties id="mail_config"					location="classpath:mail_config.properties" />
+	<util:properties id="redis_config"					location="classpath:redis_config.properties" />
+	<util:properties id="jms_config" 					location="classpath:jms_config.properties" />
+	<util:properties id="redirect_config"  				location="classpath:redirect_config.properties" />
+	<util:properties id="wx_send_red_pack_config"  		location="classpath:wx_send_red_pack_config.properties" />
+	<context:property-placeholder 	    		       		location="classpath:*_config.properties"/>
+		<bean id="transactionMapService"
+		class="com.gionee.common.transactionMap.impl.TransactionMapServiceImpl">
+		<property name="transactionMap">
+			<map>
+				<entry key="170001" value-ref="synOrderAction" />  					 <!-- 接收amigo支付服务器请求，同步订单数据 -->
+				<entry key="180001" value-ref="queryPromotionActivityAction" />  	 <!-- 接收客户端或服务器请求，返回营销活动数据-->
+				<entry key="180002" value-ref="queryAnnouncementAction" />  		 <!-- 接收客户端或服务器请求，返回公告数据-->
+			</map>
+		</property>
+	</bean>
+
+	
+	      <!--with c3p0 connection pool  -->
+        
+        <!-- 交易数据库 -->
+      <bean id="dataSource_now" class="com.mchange.v2.c3p0.ComboPooledDataSource"> 
+	        <property name="driverClass" value="${database.driver}"></property>     
+	        <property name="jdbcUrl" 	 value="${database.url}"></property>
+	        <property name="user" 		 value="${database.username}"></property> 
+	        <property name="password" 	 value="${database.password}"></property> 
+	        <property name="minPoolSize" value="${database.minimumConnectionCount}"></property> 
+	        <property name="maxPoolSize" value="${database.maximumConnectionCount}"></property> 
+	        <property name="maxIdleTime" value="${database.houseKeepingSleepTime}"></property> 
+      </bean>
+        
+      <!-- 历史库，历史的数据的查询到另外的表进行查询 -->
+      <bean id="dataSource_his"  class="com.mchange.v2.c3p0.ComboPooledDataSource"> 
+	        <property name="driverClass" value="${database_his.driver}"></property>     
+            <property name="jdbcUrl"     value="${database_his.url}"></property>
+            <property name="user" 		 value="${database_his.username}"></property> 
+            <property name="password"    value="${database_his.password}"></property> 
+            <property name="minPoolSize" value="${database_his.minimumConnectionCount}"></property> 
+            <property name="maxPoolSize" value="${database_his.maximumConnectionCount}"></property> 
+            <property name="maxIdleTime" value="${database_his.houseKeepingSleepTime}"></property> 
+      </bean> 
+ 
+
+	<!--  -->
+	<bean id="dataSource_pay" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${database_pay.driver}"></property>
+		<property name="jdbcUrl" value="${database_pay.url}"></property>
+		<property name="user" value="${database_pay.username}"></property>
+		<property name="password" value="${database_pay.password}"></property>
+		<property name="minPoolSize" value="${database_pay.minimumConnectionCount}"></property>
+		<property name="maxPoolSize" value="${database_pay.maximumConnectionCount}"></property>
+		<property name="maxIdleTime" value="${database_pay.houseKeepingSleepTime}"></property>
+	</bean>
+	
+	 <bean id="dataSource" class="com.gionee.common.multidataSource.DynamicDataSource">   
+        <property name="targetDataSources">   
+            <map key-type="java.lang.String">   
+                <entry key="ds_now" value-ref="dataSource_now" ></entry>   
+                <entry key="ds_his" value-ref="dataSource_his" ></entry>
+                <entry key="ds_pay" value-ref="dataSource_pay" ></entry>   
+            </map>   
+        </property>   
+        <property name="defaultTargetDataSource" ref="dataSource_now"></property>   
+    </bean> 
+	
+	     
+	<bean id="sqlSessionFactory" name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:com/gionee/pay/promotion/core/dao/impl/mapper/*Mapper.xml</value> 
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="sqlSessionFactoryTemplate" name="sqlSessionFactoryTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+       <constructor-arg index="0" ref="sqlSessionFactory" />  
+    </bean>
+
+    <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource">
+            <ref bean="dataSource" />
+        </property>
+    </bean>   
+    
+    
+        <tx:annotation-driven transaction-manager="transactionManager" /> 
+    
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value=" com.gionee.pay.promotion.core.dao.mapper" />
+		<!-- spring 3.1.1 和mybatis 要用名字指定连接工厂 因为跟property-placeholder冲突 -->
+		<!-- <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" /> -->
+		<!-- <property name="sqlSessionFactory" ref="sqlSessionFactory" /> -->
+		<property name="sqlSessionTemplateBeanName"  value="sqlSessionFactoryTemplate"  />
+	</bean>
+    
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="add*"     propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="del*"     propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="modify*"  propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="update*"  propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="insert*"  propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="txn_*"    propagation="REQUIRED" rollback-for="java.lang.Exception" no-rollback-for="com.gionee.common.exception.NotRollBackBizException"/> <!-- 需要加事务的函数开头 -->
+            <tx:method name="create*"  propagation="REQUIRED" rollback-for="java.lang.Exception" no-rollback-for="com.gionee.common.exception.NotRollBackBizException"/><!-- 定义不需要回滚的异常 -->
+            <tx:method name="*"        read-only="true" />
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="allManagerMethod" expression="execution(* com.gionee.pay.promotion.core.service..*.*(..))" />
+        <aop:advisor pointcut-ref="allManagerMethod" advice-ref="txAdvice" order="10" />
+    </aop:config> 
+    <task:scheduled-tasks>
+		<task:scheduled ref="promotionJobSendRedPackService"   	 			 method="synSendRedPack"  cron="0 0/1 * * * ?"/>   <!-- 每1分钟根据订单发送红包 -->
+	</task:scheduled-tasks>
+
+	 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host">
+			<value>${mail_host}</value>
+		</property>
+		<property name="username">
+			<value>${mail_username}</value>
+		</property>
+		<property name="port">
+			<value>${mail_port}</value>
+		</property>
+		<property name="password">
+			<value>${mail_password}</value>
+		</property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.timeout">25000</prop>
+			</props>
+		</property>
+	</bean>	
+    
+	<import resource="redis.xml"/>
+	<import resource="jms.xml" />
+	
+</beans>

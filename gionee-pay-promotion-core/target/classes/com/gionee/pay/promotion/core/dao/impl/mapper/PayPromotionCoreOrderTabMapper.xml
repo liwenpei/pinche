@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gionee.pay.promotion.core.dao.mapper.PayPromotionCoreOrderTabMapper">
+  <resultMap id="BaseResultMap" type="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreOrderTab">
+    <id column="int_order_no" jdbcType="VARCHAR" property="int_order_no" />
+    <id column="int_trade_no" jdbcType="VARCHAR" property="int_trade_no" />
+    <result column="int_txn_no" jdbcType="VARCHAR" property="int_txn_no" />
+    <result column="int_txn_date" jdbcType="DATE" property="int_txn_date" />
+    <result column="int_txn_time" jdbcType="TIMESTAMP" property="int_txn_time" />
+    <result column="req_order_no" jdbcType="VARCHAR" property="req_order_no" />
+    <result column="req_trade_no" jdbcType="VARCHAR" property="req_trade_no" />
+    <result column="thirdTransactionNo" jdbcType="VARCHAR" property="thirdTransactionNo" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="app_id" jdbcType="VARCHAR" property="app_id" />
+    <result column="merchant_id" jdbcType="VARCHAR" property="merchant_id" />
+    <result column="gift_trans_amt" jdbcType="DECIMAL" property="gift_trans_amt" />
+    <result column="pay_channel" jdbcType="VARCHAR" property="pay_channel" />
+    <result column="outOrderNo" jdbcType="VARCHAR" property="outOrderNo" />
+    <result column="trans_type" jdbcType="VARCHAR" property="trans_type" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="user_id" jdbcType="VARCHAR" property="user_id" />
+    <result column="phone_no" jdbcType="VARCHAR" property="phone_no" />
+    <result column="wechat_open_id" jdbcType="VARCHAR" property="wechat_open_id" />
+    <result column="nonce_str" jdbcType="VARCHAR" property="nonce_str" />
+    <result column="sign" jdbcType="VARCHAR" property="sign" />
+    <result column="pay_create_time" jdbcType="TIMESTAMP" property="pay_create_time" />
+    <result column="pay_trans_time" jdbcType="TIMESTAMP" property="pay_trans_time" />
+    <result column="platform_type" jdbcType="VARCHAR" property="platform_type" />
+    <result column="busi_type" jdbcType="VARCHAR" property="busi_type" />
+    <result column="activity_no" jdbcType="VARCHAR" property="activity_no" />
+    <result column="package_seq_id" jdbcType="INTEGER" property="package_seq_id" />
+    <result column="activity_name" jdbcType="VARCHAR" property="activity_name" />
+    <result column="activity_desc" jdbcType="VARCHAR" property="activity_desc" />
+    <result column="share_statement" jdbcType="VARCHAR" property="share_statement" />
+    <result column="share_desc" jdbcType="VARCHAR" property="share_desc" />
+    <result column="share_pic_url" jdbcType="VARCHAR" property="share_pic_url" />
+    <result column="share_url" jdbcType="VARCHAR" property="share_url" />
+    <result column="gift_type" jdbcType="VARCHAR" property="gift_type" />
+    <result column="wish_desc" jdbcType="VARCHAR" property="wish_desc" />
+    <result column="sponsor" jdbcType="VARCHAR" property="sponsor" />
+    <result column="service_type" jdbcType="VARCHAR" property="service_type" />
+    <result column="mch_billno" jdbcType="VARCHAR" property="mch_billno" />
+    <result column="err_code" jdbcType="VARCHAR" property="err_code" />
+    <result column="send_listid" jdbcType="VARCHAR" property="send_listid" />
+    <result column="product_id" jdbcType="VARCHAR" property="product_id" />
+    <result column="create_date" jdbcType="DATE" property="create_date" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="last_upd_time" jdbcType="TIMESTAMP" property="last_upd_time" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="client_ip" jdbcType="VARCHAR" property="client_ip" />
+    <result column="auditor" jdbcType="VARCHAR" property="auditor" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    int_order_no, int_trade_no, int_txn_no, int_txn_date, int_txn_time, req_order_no, 
+    req_trade_no, thirdTransactionNo, amount, app_id, merchant_id, gift_trans_amt, pay_channel, 
+    outOrderNo, trans_type, status, user_id, phone_no, wechat_open_id, nonce_str, sign, 
+    pay_create_time, pay_trans_time, platform_type, busi_type, activity_no, package_seq_id, 
+    activity_name, activity_desc, share_statement, share_desc, share_pic_url, share_url, 
+    gift_type, wish_desc, sponsor, service_type, mch_billno, err_code, send_listid, product_id, 
+    create_date, create_time, last_upd_time, operator, client_ip, auditor, reserved1, 
+    reserved2, reserved3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreOrderTabKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_promotion_core_order_tab
+    where int_order_no = #{int_order_no,jdbcType=VARCHAR}
+      and int_trade_no = #{int_trade_no,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreOrderTabKey">
+    delete from pay_promotion_core_order_tab
+    where int_order_no = #{int_order_no,jdbcType=VARCHAR}
+      and int_trade_no = #{int_trade_no,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreOrderTab">
+    insert into pay_promotion_core_order_tab (int_order_no, int_trade_no, int_txn_no, 
+      int_txn_date, int_txn_time, req_order_no, 
+      req_trade_no, thirdTransactionNo, amount, 
+      app_id, merchant_id, gift_trans_amt, 
+      pay_channel, outOrderNo, trans_type, 
+      status, user_id, phone_no, 
+      wechat_open_id, nonce_str, sign, 
+      pay_create_time, pay_trans_time, platform_type, 
+      busi_type, activity_no, package_seq_id, 
+      activity_name, activity_desc, share_statement, 
+      share_desc, share_pic_url, share_url, 
+      gift_type, wish_desc, sponsor, 
+      service_type, mch_billno, err_code, 
+      send_listid, product_id, create_date, 
+      create_time, last_upd_time, operator, 
+      client_ip, auditor, reserved1, 
+      reserved2, reserved3)
+    values (#{int_order_no,jdbcType=VARCHAR}, #{int_trade_no,jdbcType=VARCHAR}, #{int_txn_no,jdbcType=VARCHAR}, 
+      #{int_txn_date,jdbcType=DATE}, #{int_txn_time,jdbcType=TIMESTAMP}, #{req_order_no,jdbcType=VARCHAR}, 
+      #{req_trade_no,jdbcType=VARCHAR}, #{thirdTransactionNo,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, 
+      #{app_id,jdbcType=VARCHAR}, #{merchant_id,jdbcType=VARCHAR}, #{gift_trans_amt,jdbcType=DECIMAL}, 
+      #{pay_channel,jdbcType=VARCHAR}, #{outOrderNo,jdbcType=VARCHAR}, #{trans_type,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{user_id,jdbcType=VARCHAR}, #{phone_no,jdbcType=VARCHAR}, 
+      #{wechat_open_id,jdbcType=VARCHAR}, #{nonce_str,jdbcType=VARCHAR}, #{sign,jdbcType=VARCHAR}, 
+      #{pay_create_time,jdbcType=TIMESTAMP}, #{pay_trans_time,jdbcType=TIMESTAMP}, #{platform_type,jdbcType=VARCHAR}, 
+      #{busi_type,jdbcType=VARCHAR}, #{activity_no,jdbcType=VARCHAR}, #{package_seq_id,jdbcType=INTEGER}, 
+      #{activity_name,jdbcType=VARCHAR}, #{activity_desc,jdbcType=VARCHAR}, #{share_statement,jdbcType=VARCHAR}, 
+      #{share_desc,jdbcType=VARCHAR}, #{share_pic_url,jdbcType=VARCHAR}, #{share_url,jdbcType=VARCHAR}, 
+      #{gift_type,jdbcType=VARCHAR}, #{wish_desc,jdbcType=VARCHAR}, #{sponsor,jdbcType=VARCHAR}, 
+      #{service_type,jdbcType=VARCHAR}, #{mch_billno,jdbcType=VARCHAR}, #{err_code,jdbcType=VARCHAR}, 
+      #{send_listid,jdbcType=VARCHAR}, #{product_id,jdbcType=VARCHAR}, #{create_date,jdbcType=DATE}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{last_upd_time,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}, 
+      #{client_ip,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreOrderTab">
+    insert into pay_promotion_core_order_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="int_order_no != null">
+        int_order_no,
+      </if>
+      <if test="int_trade_no != null">
+        int_trade_no,
+      </if>
+      <if test="int_txn_no != null">
+        int_txn_no,
+      </if>
+      <if test="int_txn_date != null">
+        int_txn_date,
+      </if>
+      <if test="int_txn_time != null">
+        int_txn_time,
+      </if>
+      <if test="req_order_no != null">
+        req_order_no,
+      </if>
+      <if test="req_trade_no != null">
+        req_trade_no,
+      </if>
+      <if test="thirdTransactionNo != null">
+        thirdTransactionNo,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="app_id != null">
+        app_id,
+      </if>
+      <if test="merchant_id != null">
+        merchant_id,
+      </if>
+      <if test="gift_trans_amt != null">
+        gift_trans_amt,
+      </if>
+      <if test="pay_channel != null">
+        pay_channel,
+      </if>
+      <if test="outOrderNo != null">
+        outOrderNo,
+      </if>
+      <if test="trans_type != null">
+        trans_type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="phone_no != null">
+        phone_no,
+      </if>
+      <if test="wechat_open_id != null">
+        wechat_open_id,
+      </if>
+      <if test="nonce_str != null">
+        nonce_str,
+      </if>
+      <if test="sign != null">
+        sign,
+      </if>
+      <if test="pay_create_time != null">
+        pay_create_time,
+      </if>
+      <if test="pay_trans_time != null">
+        pay_trans_time,
+      </if>
+      <if test="platform_type != null">
+        platform_type,
+      </if>
+      <if test="busi_type != null">
+        busi_type,
+      </if>
+      <if test="activity_no != null">
+        activity_no,
+      </if>
+      <if test="package_seq_id != null">
+        package_seq_id,
+      </if>
+      <if test="activity_name != null">
+        activity_name,
+      </if>
+      <if test="activity_desc != null">
+        activity_desc,
+      </if>
+      <if test="share_statement != null">
+        share_statement,
+      </if>
+      <if test="share_desc != null">
+        share_desc,
+      </if>
+      <if test="share_pic_url != null">
+        share_pic_url,
+      </if>
+      <if test="share_url != null">
+        share_url,
+      </if>
+      <if test="gift_type != null">
+        gift_type,
+      </if>
+      <if test="wish_desc != null">
+        wish_desc,
+      </if>
+      <if test="sponsor != null">
+        sponsor,
+      </if>
+      <if test="service_type != null">
+        service_type,
+      </if>
+      <if test="mch_billno != null">
+        mch_billno,
+      </if>
+      <if test="err_code != null">
+        err_code,
+      </if>
+      <if test="send_listid != null">
+        send_listid,
+      </if>
+      <if test="product_id != null">
+        product_id,
+      </if>
+      <if test="create_date != null">
+        create_date,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="last_upd_time != null">
+        last_upd_time,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="client_ip != null">
+        client_ip,
+      </if>
+      <if test="auditor != null">
+        auditor,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="int_order_no != null">
+        #{int_order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="int_trade_no != null">
+        #{int_trade_no,jdbcType=VARCHAR},
+      </if>
+      <if test="int_txn_no != null">
+        #{int_txn_no,jdbcType=VARCHAR},
+      </if>
+      <if test="int_txn_date != null">
+        #{int_txn_date,jdbcType=DATE},
+      </if>
+      <if test="int_txn_time != null">
+        #{int_txn_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="req_order_no != null">
+        #{req_order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="req_trade_no != null">
+        #{req_trade_no,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdTransactionNo != null">
+        #{thirdTransactionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="app_id != null">
+        #{app_id,jdbcType=VARCHAR},
+      </if>
+      <if test="merchant_id != null">
+        #{merchant_id,jdbcType=VARCHAR},
+      </if>
+      <if test="gift_trans_amt != null">
+        #{gift_trans_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="pay_channel != null">
+        #{pay_channel,jdbcType=VARCHAR},
+      </if>
+      <if test="outOrderNo != null">
+        #{outOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_type != null">
+        #{trans_type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=VARCHAR},
+      </if>
+      <if test="phone_no != null">
+        #{phone_no,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_open_id != null">
+        #{wechat_open_id,jdbcType=VARCHAR},
+      </if>
+      <if test="nonce_str != null">
+        #{nonce_str,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null">
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="pay_create_time != null">
+        #{pay_create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pay_trans_time != null">
+        #{pay_trans_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="platform_type != null">
+        #{platform_type,jdbcType=VARCHAR},
+      </if>
+      <if test="busi_type != null">
+        #{busi_type,jdbcType=VARCHAR},
+      </if>
+      <if test="activity_no != null">
+        #{activity_no,jdbcType=VARCHAR},
+      </if>
+      <if test="package_seq_id != null">
+        #{package_seq_id,jdbcType=INTEGER},
+      </if>
+      <if test="activity_name != null">
+        #{activity_name,jdbcType=VARCHAR},
+      </if>
+      <if test="activity_desc != null">
+        #{activity_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="share_statement != null">
+        #{share_statement,jdbcType=VARCHAR},
+      </if>
+      <if test="share_desc != null">
+        #{share_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="share_pic_url != null">
+        #{share_pic_url,jdbcType=VARCHAR},
+      </if>
+      <if test="share_url != null">
+        #{share_url,jdbcType=VARCHAR},
+      </if>
+      <if test="gift_type != null">
+        #{gift_type,jdbcType=VARCHAR},
+      </if>
+      <if test="wish_desc != null">
+        #{wish_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsor != null">
+        #{sponsor,jdbcType=VARCHAR},
+      </if>
+      <if test="service_type != null">
+        #{service_type,jdbcType=VARCHAR},
+      </if>
+      <if test="mch_billno != null">
+        #{mch_billno,jdbcType=VARCHAR},
+      </if>
+      <if test="err_code != null">
+        #{err_code,jdbcType=VARCHAR},
+      </if>
+      <if test="send_listid != null">
+        #{send_listid,jdbcType=VARCHAR},
+      </if>
+      <if test="product_id != null">
+        #{product_id,jdbcType=VARCHAR},
+      </if>
+      <if test="create_date != null">
+        #{create_date,jdbcType=DATE},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_upd_time != null">
+        #{last_upd_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="client_ip != null">
+        #{client_ip,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null">
+        #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreOrderTab">
+    update pay_promotion_core_order_tab
+    <set>
+      <if test="int_txn_no != null">
+        int_txn_no = #{int_txn_no,jdbcType=VARCHAR},
+      </if>
+      <if test="int_txn_date != null">
+        int_txn_date = #{int_txn_date,jdbcType=DATE},
+      </if>
+      <if test="int_txn_time != null">
+        int_txn_time = #{int_txn_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="req_order_no != null">
+        req_order_no = #{req_order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="req_trade_no != null">
+        req_trade_no = #{req_trade_no,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdTransactionNo != null">
+        thirdTransactionNo = #{thirdTransactionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="app_id != null">
+        app_id = #{app_id,jdbcType=VARCHAR},
+      </if>
+      <if test="merchant_id != null">
+        merchant_id = #{merchant_id,jdbcType=VARCHAR},
+      </if>
+      <if test="gift_trans_amt != null">
+        gift_trans_amt = #{gift_trans_amt,jdbcType=DECIMAL},
+      </if>
+      <if test="pay_channel != null">
+        pay_channel = #{pay_channel,jdbcType=VARCHAR},
+      </if>
+      <if test="outOrderNo != null">
+        outOrderNo = #{outOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="trans_type != null">
+        trans_type = #{trans_type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=VARCHAR},
+      </if>
+      <if test="phone_no != null">
+        phone_no = #{phone_no,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_open_id != null">
+        wechat_open_id = #{wechat_open_id,jdbcType=VARCHAR},
+      </if>
+      <if test="nonce_str != null">
+        nonce_str = #{nonce_str,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null">
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="pay_create_time != null">
+        pay_create_time = #{pay_create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pay_trans_time != null">
+        pay_trans_time = #{pay_trans_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="platform_type != null">
+        platform_type = #{platform_type,jdbcType=VARCHAR},
+      </if>
+      <if test="busi_type != null">
+        busi_type = #{busi_type,jdbcType=VARCHAR},
+      </if>
+      <if test="activity_no != null">
+        activity_no = #{activity_no,jdbcType=VARCHAR},
+      </if>
+      <if test="package_seq_id != null">
+        package_seq_id = #{package_seq_id,jdbcType=INTEGER},
+      </if>
+      <if test="activity_name != null">
+        activity_name = #{activity_name,jdbcType=VARCHAR},
+      </if>
+      <if test="activity_desc != null">
+        activity_desc = #{activity_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="share_statement != null">
+        share_statement = #{share_statement,jdbcType=VARCHAR},
+      </if>
+      <if test="share_desc != null">
+        share_desc = #{share_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="share_pic_url != null">
+        share_pic_url = #{share_pic_url,jdbcType=VARCHAR},
+      </if>
+      <if test="share_url != null">
+        share_url = #{share_url,jdbcType=VARCHAR},
+      </if>
+      <if test="gift_type != null">
+        gift_type = #{gift_type,jdbcType=VARCHAR},
+      </if>
+      <if test="wish_desc != null">
+        wish_desc = #{wish_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsor != null">
+        sponsor = #{sponsor,jdbcType=VARCHAR},
+      </if>
+      <if test="service_type != null">
+        service_type = #{service_type,jdbcType=VARCHAR},
+      </if>
+      <if test="mch_billno != null">
+        mch_billno = #{mch_billno,jdbcType=VARCHAR},
+      </if>
+      <if test="err_code != null">
+        err_code = #{err_code,jdbcType=VARCHAR},
+      </if>
+      <if test="send_listid != null">
+        send_listid = #{send_listid,jdbcType=VARCHAR},
+      </if>
+      <if test="product_id != null">
+        product_id = #{product_id,jdbcType=VARCHAR},
+      </if>
+      <if test="create_date != null">
+        create_date = #{create_date,jdbcType=DATE},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_upd_time != null">
+        last_upd_time = #{last_upd_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="client_ip != null">
+        client_ip = #{client_ip,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null">
+        auditor = #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where int_order_no = #{int_order_no,jdbcType=VARCHAR}
+      and int_trade_no = #{int_trade_no,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreOrderTab">
+    update pay_promotion_core_order_tab
+    set int_txn_no = #{int_txn_no,jdbcType=VARCHAR},
+      int_txn_date = #{int_txn_date,jdbcType=DATE},
+      int_txn_time = #{int_txn_time,jdbcType=TIMESTAMP},
+      req_order_no = #{req_order_no,jdbcType=VARCHAR},
+      req_trade_no = #{req_trade_no,jdbcType=VARCHAR},
+      thirdTransactionNo = #{thirdTransactionNo,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      app_id = #{app_id,jdbcType=VARCHAR},
+      merchant_id = #{merchant_id,jdbcType=VARCHAR},
+      gift_trans_amt = #{gift_trans_amt,jdbcType=DECIMAL},
+      pay_channel = #{pay_channel,jdbcType=VARCHAR},
+      outOrderNo = #{outOrderNo,jdbcType=VARCHAR},
+      trans_type = #{trans_type,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      user_id = #{user_id,jdbcType=VARCHAR},
+      phone_no = #{phone_no,jdbcType=VARCHAR},
+      wechat_open_id = #{wechat_open_id,jdbcType=VARCHAR},
+      nonce_str = #{nonce_str,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR},
+      pay_create_time = #{pay_create_time,jdbcType=TIMESTAMP},
+      pay_trans_time = #{pay_trans_time,jdbcType=TIMESTAMP},
+      platform_type = #{platform_type,jdbcType=VARCHAR},
+      busi_type = #{busi_type,jdbcType=VARCHAR},
+      activity_no = #{activity_no,jdbcType=VARCHAR},
+      package_seq_id = #{package_seq_id,jdbcType=INTEGER},
+      activity_name = #{activity_name,jdbcType=VARCHAR},
+      activity_desc = #{activity_desc,jdbcType=VARCHAR},
+      share_statement = #{share_statement,jdbcType=VARCHAR},
+      share_desc = #{share_desc,jdbcType=VARCHAR},
+      share_pic_url = #{share_pic_url,jdbcType=VARCHAR},
+      share_url = #{share_url,jdbcType=VARCHAR},
+      gift_type = #{gift_type,jdbcType=VARCHAR},
+      wish_desc = #{wish_desc,jdbcType=VARCHAR},
+      sponsor = #{sponsor,jdbcType=VARCHAR},
+      service_type = #{service_type,jdbcType=VARCHAR},
+      mch_billno = #{mch_billno,jdbcType=VARCHAR},
+      err_code = #{err_code,jdbcType=VARCHAR},
+      send_listid = #{send_listid,jdbcType=VARCHAR},
+      product_id = #{product_id,jdbcType=VARCHAR},
+      create_date = #{create_date,jdbcType=DATE},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      last_upd_time = #{last_upd_time,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      client_ip = #{client_ip,jdbcType=VARCHAR},
+      auditor = #{auditor,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR}
+    where int_order_no = #{int_order_no,jdbcType=VARCHAR}
+      and int_trade_no = #{int_trade_no,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectRecordNum" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreOrderTab">
+  select count(*)
+  from 
+  pay_promotion_core_order_tab
+  where 1=1
+  <if test="int_order_no != null">
+  and int_order_no = #{int_order_no,jdbcType=VARCHAR}
+  </if>
+  <if test="int_trade_no != null">
+  and int_trade_no = #{int_trade_no,jdbcType=VARCHAR}
+  </if>
+  
+  <if test="int_txn_no != null">
+        and int_txn_no = #{int_txn_no,jdbcType=VARCHAR}
+      </if>
+      <if test="int_txn_date != null">
+        and int_txn_date = #{int_txn_date,jdbcType=DATE}
+      </if>
+      <if test="int_txn_time != null">
+        and int_txn_time = #{int_txn_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="req_order_no != null">
+        and req_order_no = #{req_order_no,jdbcType=VARCHAR}
+      </if>
+      <if test="req_trade_no != null">
+        and req_trade_no = #{req_trade_no,jdbcType=VARCHAR}
+      </if>
+      <if test="thirdTransactionNo != null">
+        and thirdTransactionNo = #{thirdTransactionNo,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        and amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="gift_trans_amt != null">
+        and gift_trans_amt = #{gift_trans_amt,jdbcType=DECIMAL}
+      </if>
+      <if test="pay_channel != null">
+        and pay_channel = #{pay_channel,jdbcType=VARCHAR}
+      </if>
+      <if test="outOrderNo != null">
+       and  outOrderNo = #{outOrderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="trans_type != null">
+        and trans_type = #{trans_type,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        and status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="user_id != null">
+        and user_id = #{user_id,jdbcType=VARCHAR}
+      </if>
+      <if test="phone_no != null">
+        and phone_no = #{phone_no,jdbcType=VARCHAR}
+      </if>
+      <if test="wechat_open_id != null">
+        and wechat_open_id = #{wechat_open_id,jdbcType=VARCHAR}
+      </if>
+      <if test="pay_create_time != null">
+        and pay_create_time = #{pay_create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="pay_trans_time != null">
+        and pay_trans_time = #{pay_trans_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="platform_type != null">
+        and platform_type = #{platform_type,jdbcType=VARCHAR}
+      </if>
+      <if test="busi_type != null">
+        and busi_type = #{busi_type,jdbcType=VARCHAR}
+      </if>
+      <if test="activity_no != null">
+        and activity_no = #{activity_no,jdbcType=VARCHAR}
+      </if>
+      <if test="activity_name != null">
+        and activity_name = #{activity_name,jdbcType=VARCHAR}
+      </if>
+      <if test="gift_type != null">
+        and gift_type = #{gift_type,jdbcType=VARCHAR}
+      </if>
+      <if test="service_type != null">
+        and service_type = #{service_type,jdbcType=VARCHAR}
+      </if>
+      <if test="send_listid != null">
+        and send_listid = #{send_listid,jdbcType=VARCHAR}
+      </if>
+      <if test="product_id != null">
+        and product_id = #{product_id,jdbcType=VARCHAR}
+      </if>
+      <if test="create_date != null">
+        and create_date = #{create_date,jdbcType=DATE}
+      </if>
+      <if test="create_time != null">
+       and  create_time = #{create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="last_upd_time != null">
+        and last_upd_time = #{last_upd_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operator != null">
+       and  operator = #{operator,jdbcType=VARCHAR}
+      </if>
+      <if test="auditor != null">
+       and  auditor = #{auditor,jdbcType=VARCHAR}
+      </if>
+      <if test="reserved1 != null">
+       and  reserved1 = #{reserved1,jdbcType=VARCHAR}
+      </if>
+      <if test="reserved2 != null">
+      and   reserved2 = #{reserved2,jdbcType=VARCHAR}
+      </if>
+      <if test="reserved3 != null">
+       and  reserved3 = #{reserved3,jdbcType=VARCHAR}
+      </if>
+      <if test="package_seq_id != null">
+       and  package_seq_id = #{package_seq_id,jdbcType=VARCHAR}
+      </if>
+      
+      <if test="app_id != null">
+       and  app_id = #{app_id,jdbcType=VARCHAR}
+      </if>
+      <if test="merchant_id != null">
+       and  merchant_id = #{merchant_id,jdbcType=VARCHAR}
+      </if>
+      
+      
+      <if test="mch_billno != null">
+       and  mch_billno = #{mch_billno,jdbcType=VARCHAR}
+      </if>
+      <if test="err_code != null">
+       and  err_code = #{err_code,jdbcType=VARCHAR}
+      </if>
+  </select>
+  
+  <select id="selectAllListByParams" resultMap="BaseResultMap" resultType="list">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from pay_promotion_core_order_tab
+  	where 1=1 
+  	<if test="params.status != null and params.status != '' ">
+  		and status = #{params.status}
+  	</if>
+  	<choose>
+            <when test="group_by_param != null">
+            	group by ${group_by_param}
+            </when>
+        </choose>
+  </select>
+</mapper>

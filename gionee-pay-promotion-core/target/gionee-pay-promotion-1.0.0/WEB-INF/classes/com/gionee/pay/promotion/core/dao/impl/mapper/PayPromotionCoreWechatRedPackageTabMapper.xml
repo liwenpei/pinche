@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gionee.pay.promotion.core.dao.mapper.PayPromotionCoreWechatRedPackageTabMapper" >
+  <resultMap id="BaseResultMap" type="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreWechatRedPackageTab" >
+    <id column="package_seq_id" property="package_seq_id" jdbcType="INTEGER" />
+    <id column="activity_no" property="activity_no" jdbcType="VARCHAR" />
+    <result column="activity_name" property="activity_name" jdbcType="VARCHAR" />
+    <result column="amt" property="amt" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="user_id" property="user_id" jdbcType="VARCHAR" />
+    <result column="wechat_open_id" property="wechat_open_id" jdbcType="VARCHAR" />
+    <result column="received_time" property="received_time" jdbcType="TIMESTAMP" />
+    <result column="create_date" property="create_date" jdbcType="DATE" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="last_upd_time" property="last_upd_time" jdbcType="TIMESTAMP" />
+    <result column="int_order_no" property="int_order_no" jdbcType="VARCHAR" />
+    <result column="int_txn_no" property="int_txn_no" jdbcType="VARCHAR" />
+    <result column="req_order_no" property="req_order_no" jdbcType="VARCHAR" />
+    <result column="int_trade_no" property="req_order_no" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    package_seq_id, activity_no, activity_name, amt, status, user_id, wechat_open_id, 
+    received_time, create_date, create_time, last_upd_time,int_order_no,int_txn_no,req_order_no,int_trade_no
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreWechatRedPackageTabKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from pay_promotion_core_wechat_red_package_tab
+    where package_seq_id = #{package_seq_id,jdbcType=INTEGER}
+      and activity_no = #{activity_no,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreWechatRedPackageTabKey" >
+    delete from pay_promotion_core_wechat_red_package_tab
+    where package_seq_id = #{package_seq_id,jdbcType=INTEGER}
+      and activity_no = #{activity_no,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreWechatRedPackageTab" >
+    insert into pay_promotion_core_wechat_red_package_tab (package_seq_id, activity_no, activity_name, 
+      amt, status, user_id, 
+      wechat_open_id, received_time, create_date, 
+      create_time, last_upd_time,int_order_no,int_txn_no,req_order_no,int_trade_no)
+    values (#{package_seq_id,jdbcType=INTEGER}, #{activity_no,jdbcType=VARCHAR}, #{activity_name,jdbcType=VARCHAR}, 
+      #{amt,jdbcType=DECIMAL}, #{status,jdbcType=VARCHAR}, #{user_id,jdbcType=VARCHAR}, 
+      #{wechat_open_id,jdbcType=VARCHAR}, #{received_time,jdbcType=TIMESTAMP}, #{create_date,jdbcType=DATE}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{last_upd_time,jdbcType=TIMESTAMP},
+      #{int_order_no,jdbcType=VARCHAR}, #{int_txn_no,jdbcType=VARCHAR}, #{req_order_no,jdbcType=VARCHAR}, #{int_trade_no,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreWechatRedPackageTab" >
+    insert into pay_promotion_core_wechat_red_package_tab
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="package_seq_id != null" >
+        package_seq_id,
+      </if>
+      <if test="activity_no != null" >
+        activity_no,
+      </if>
+      <if test="activity_name != null" >
+        activity_name,
+      </if>
+      <if test="amt != null" >
+        amt,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="user_id != null" >
+        user_id,
+      </if>
+      <if test="wechat_open_id != null" >
+        wechat_open_id,
+      </if>
+      <if test="received_time != null" >
+        received_time,
+      </if>
+      <if test="create_date != null" >
+        create_date,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="last_upd_time != null" >
+        last_upd_time,
+      </if>
+      
+      
+      <if test="int_order_no != null" >
+        int_order_no,
+      </if>
+      <if test="int_txn_no != null" >
+        int_txn_no,
+      </if>
+      <if test="req_order_no != null" >
+        req_order_no,
+      </if>
+      
+      <if test="int_trade_no != null" >
+        int_trade_no,
+      </if>
+      
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="package_seq_id != null" >
+        #{package_seq_id,jdbcType=INTEGER},
+      </if>
+      <if test="activity_no != null" >
+        #{activity_no,jdbcType=VARCHAR},
+      </if>
+      <if test="activity_name != null" >
+        #{activity_name,jdbcType=VARCHAR},
+      </if>
+      <if test="amt != null" >
+        #{amt,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="user_id != null" >
+        #{user_id,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_open_id != null" >
+        #{wechat_open_id,jdbcType=VARCHAR},
+      </if>
+      <if test="received_time != null" >
+        #{received_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_date != null" >
+        #{create_date,jdbcType=DATE},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_upd_time != null" >
+        #{last_upd_time,jdbcType=TIMESTAMP},
+      </if>
+      
+      <if test="int_order_no != null" >
+        #{int_order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="int_txn_no != null" >
+        #{int_txn_no,jdbcType=VARCHAR},
+      </if>
+      <if test="req_order_no != null" >
+        #{req_order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="int_trade_no != null" >
+        #{int_trade_no,jdbcType=VARCHAR},
+      </if>
+      
+      
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelectiveWithStatus" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreWechatRedPackageTab" >
+    update pay_promotion_core_wechat_red_package_tab
+    <set >
+      <if test="activity_name != null" >
+        activity_name = #{activity_name,jdbcType=VARCHAR},
+      </if>
+      <if test="amt != null" >
+        amt = #{amt,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="user_id != null" >
+        user_id = #{user_id,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_open_id != null" >
+        wechat_open_id = #{wechat_open_id,jdbcType=VARCHAR},
+      </if>
+      <if test="received_time != null" >
+        received_time = #{received_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_date != null" >
+        create_date = #{create_date,jdbcType=DATE},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_upd_time != null" >
+        last_upd_time = #{last_upd_time,jdbcType=TIMESTAMP},
+      </if>
+      
+      <if test="int_order_no != null" >
+        int_order_no = #{int_order_no,jdbcType=VARCHAR},
+      </if>
+      <if test="int_txn_no != null" >
+        int_txn_no = #{int_txn_no,jdbcType=VARCHAR},
+      </if>
+      <if test="req_order_no != null" >
+        req_order_no = #{req_order_no,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="int_trade_no != null" >
+        int_trade_no = #{int_trade_no,jdbcType=VARCHAR},
+      </if>
+      
+    </set>
+    where package_seq_id = #{package_seq_id,jdbcType=INTEGER}
+      and activity_no = #{activity_no,jdbcType=VARCHAR} 
+      <choose>
+            <when test="old_statues != null">
+                and status = #{old_statues,jdbcType=VARCHAR} 
+            </when>
+        </choose>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreWechatRedPackageTab" >
+    update pay_promotion_core_wechat_red_package_tab
+    set activity_name = #{activity_name,jdbcType=VARCHAR},
+      amt = #{amt,jdbcType=DECIMAL},
+      status = #{status,jdbcType=VARCHAR},
+      user_id = #{user_id,jdbcType=VARCHAR},
+      wechat_open_id = #{wechat_open_id,jdbcType=VARCHAR},
+      received_time = #{received_time,jdbcType=TIMESTAMP},
+      create_date = #{create_date,jdbcType=DATE},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      last_upd_time = #{last_upd_time,jdbcType=TIMESTAMP},
+      
+      int_order_no = #{int_order_no,jdbcType=VARCHAR},
+      int_txn_no = #{int_txn_no,jdbcType=VARCHAR},
+      req_order_no = #{req_order_no,jdbcType=VARCHAR}
+      
+      int_trade_no = #{int_trade_no,jdbcType=VARCHAR}
+      
+    where package_seq_id = #{package_seq_id,jdbcType=INTEGER}
+      and activity_no = #{activity_no,jdbcType=VARCHAR}
+  </update>
+  
+    <select id="selectByAllParams" resultType="list"
+	resultMap="BaseResultMap">
+	select 
+	<include refid="Base_Column_List" />
+        from  pay_promotion_core_wechat_red_package_tab 
+        where 1=1
+        <if test = "activity_no != null">
+        and activity_no = #{activity_no,jdbcType=VARCHAR}
+        </if>
+        <if test="activity_name != null" >
+        and activity_name = #{activity_name,jdbcType=VARCHAR}
+      </if>
+      <if test="amt != null" >
+       and  amt = #{amt,jdbcType=DECIMAL}
+      </if>
+      <if test="status != null" >
+        and status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="user_id != null" >
+       and  user_id = #{user_id,jdbcType=VARCHAR}
+      </if>
+      <if test="wechat_open_id != null" >
+       and  wechat_open_id = #{wechat_open_id,jdbcType=VARCHAR}
+      </if>
+      <if test="received_time != null" >
+       and  received_time = #{received_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="create_date != null" >
+        and create_date = #{create_date,jdbcType=DATE}
+      </if>
+      <if test="create_time != null" >
+        and create_time = #{create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="last_upd_time != null" >
+        and last_upd_time = #{last_upd_time,jdbcType=TIMESTAMP}
+      </if>
+      
+    </select>
+    
+   <select id="selectGiftedCount" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreWechatRedPackageTab"  resultType="Integer"  >
+	select 
+	count(*)
+        from  pay_promotion_core_wechat_red_package_tab 
+        where 1=1 and  wechat_open_id = #{wechat_open_id,jdbcType=VARCHAR}
+        <if test = "activity_no != null">
+        and activity_no = #{activity_no,jdbcType=VARCHAR}
+        </if>
+        <if test="activity_name != null" >
+        and activity_name = #{activity_name,jdbcType=VARCHAR}
+      </if>
+      <if test="amt != null" >
+       and  amt = #{amt,jdbcType=DECIMAL}
+      </if>
+      <if test="status != null" >
+        and status = #{status,jdbcType=VARCHAR}
+      </if>
+      
+      <if test="received_time != null" >
+       and  received_time = #{received_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="create_date != null" >
+        and create_date = #{create_date,jdbcType=DATE}
+      </if>
+      <if test="create_time != null" >
+        and create_time = #{create_time,jdbcType=TIMESTAMP}
+      </if>
+      <if test="last_upd_time != null" >
+        and last_upd_time = #{last_upd_time,jdbcType=TIMESTAMP}
+      </if>
+       order by activity_no,package_seq_id
+    </select>
+
+
+<resultMap id="pResult" type="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreWechatRedPackageTab">  
+    <id column="p_package_seq_id" property="package_seq_id"   />
+    <id column="p_activity_no" property="activity_no"  />
+    <result column="p_activity_name" property="activity_name"/>
+    <result column="p_amt" property="amt"   />
+    <result column="p_status" property="status"  />
+    <result column="p_user_id" property="user_id"  />
+    <result column="p_wechat_open_id" property="wechat_open_id"  />
+    <result column="p_received_time" property="received_time" />
+    <result column="p_create_date" property="create_date" />
+    <result column="p_create_time" property="create_time"  />
+    <result column="p_last_upd_time" property="last_upd_time"   />
+    
+    <result column="p_int_order_no" property="int_order_no"  />
+    <result column="p_int_txn_no" property="int_txn_no"  />
+    <result column="p_req_order_no" property="req_order_no"  />
+    
+    <result column="p_int_trade_no" property="req_order_no"  />
+	<association property="activity_no" column="p_activity_no" javaType="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreActivityTab"  resultMap="aResult"/>  
+</resultMap>  
+   
+<resultMap id="RedAndActResult" type="com.gionee.pay.promotion.core.vo.models.PayPromotionCoreWxRedPackWithActTab">  
+    <id column="p_package_seq_id" property="p_package_seq_id" jdbcType="INTEGER" />
+    <id column="p_activity_no" property="p_activity_no" jdbcType="VARCHAR" />
+    <result column="p_activity_name" property="p_activity_name" jdbcType="VARCHAR" />
+    <result column="p_amt" property="p_amt" jdbcType="DECIMAL" />
+    <result column="p_status" property="p_status" jdbcType="VARCHAR" />
+    <result column="p_user_id" property="p_user_id" jdbcType="VARCHAR" />
+    <result column="p_wechat_open_id" property="p_wechat_open_id" jdbcType="VARCHAR" />
+    <result column="p_received_time" property="p_received_time" jdbcType="TIMESTAMP" />
+    <result column="p_create_date" property="p_create_date" jdbcType="DATE" />
+    <result column="p_create_time" property="p_create_time" jdbcType="TIMESTAMP" />
+    <result column="p_last_upd_time" property="p_last_upd_time" jdbcType="TIMESTAMP" />
+    <result column="p_int_order_no" property="p_int_order_no" jdbcType="VARCHAR" />
+    <result column="p_int_txn_no" property="p_int_txn_no" jdbcType="VARCHAR" />
+    <result column="p_req_order_no" property="p_req_order_no" jdbcType="VARCHAR" />
+    <result column="p_int_trade_no" property="p_req_order_no" jdbcType="VARCHAR" />
+    
+	<result column="a_activity_no"  property="a_activity_no" />
+    <result column="a_gift_type"  property="a_gift_type" />
+    <result column="a_service_type"  property="a_service_type" />
+    <result column="a_pay_channel"  property="a_pay_channel" />
+    <result column="a_is_fixed_amt"  property="a_is_fixed_amt" />
+    <result column="a_activity_name"  property="a_activity_name" />
+    <result column="a_status"  property="a_status" />
+    <result column="a_sponsor"  property="a_sponsor" />
+    <result column="a_budget"  property="a_budget" />
+    <result column="a_quantity"  property="a_quantity" />
+    <result column="a_limited_quantity"  property="a_limited_quantity" />
+    <result column="a_platform_type"  property="a_platform_type" />
+    <result column="a_app_id"  property="a_app_id" />
+    <result column="a_scene"  property="a_scene" />
+    <result column="a_rule_type"  property="a_rule_type" />
+    <result column="a_rule_param"  property="a_rule_param" />
+    <result column="a_logo_url"  property="a_logo_url" />
+    <result column="a_wish_desc"  property="a_wish_desc" />
+    <result column="a_share_desc"  property="a_share_desc" />
+    <result column="a_share_statement"  property="a_share_statement" />
+    <result column="a_share_pic_url"  property="a_share_pic_url" />
+    <result column="a_share_url"  property="a_share_url" />
+    <result column="a_effc_time"  property="a_effc_time" />
+    <result column="a_expired_time"  property="a_expired_time" />
+    <result column="a_ceate_date"   property="a_ceate_date" />
+    <result column="a_create_time"  property="a_create_time" />
+    <result column="a_last_upd_time"  property="a_last_upd_time" />
+    <result column="a_operator"  property="a_operator" />
+    <result column="a_auditor"  property="a_auditor" />
+    <result column="a_activity_desc"  property="a_activity_desc" />
+    <result column="a_mark"  property="a_mark" /> 
+</resultMap> 
+
+	<select id="selectActAndPackListByParams"  resultMap="RedAndActResult" resultType="list">
+		select 
+		
+	p.package_seq_id as p_package_seq_id,
+    p.activity_no as p_activity_no,
+    p.activity_name as p_activity_name,
+    p.amt as p_amt,
+    p.status as p_status,
+    p.user_id as p_user_id,
+    p.wechat_open_id as p_wechat_open_id,
+    p.received_time as p_received_time,
+    p.create_date as p_create_date,
+    p.create_time as p_create_time,
+    p.last_upd_time as p_last_upd_time,
+    p.int_order_no as p_int_order_no,
+    p.int_txn_no as p_int_txn_no,
+    p.req_order_no as p_req_order_no,
+    p.int_trade_no as p_req_order_no,
+    
+	a.activity_no as a_activity_no,
+    a.gift_type as a_gift_type,
+    a.service_type as a_service_type,
+    a.pay_channel as a_pay_channel,
+    a.is_fixed_amt as a_is_fixed_amt,
+    a.activity_name as a_activity_name,
+    a.status as a_status,
+    a.sponsor as a_sponsor,
+    a.budget as a_budget,
+    a.quantity as a_quantity,
+    a.limited_quantity as a_limited_quantity,
+    a.platform_type as a_platform_type,
+    a.app_id as a_app_id,
+    a.scene as a_scene,
+    a.rule_type as a_rule_type,
+    a.rule_param as a_rule_param,
+    a.logo_url as a_logo_url,
+    a.wish_desc as a_wish_desc,
+    a.share_desc as a_share_desc,
+    a.share_statement as a_share_statement,
+    a.share_pic_url as a_share_pic_url,
+    a.share_url as a_share_url,
+    a.effc_time as a_effc_time,
+    a.expired_time as a_expired_time,
+    a.ceate_date as a_ceate_date,
+    a.create_time as a_create_time,
+    a.last_upd_time as a_last_upd_time,
+    a.operator as a_operator,
+    a.auditor as a_auditor,
+    a.activity_desc as a_activity_desc,
+    a.mark as a_mark   
+ 
+		from 
+		pay_promotion_core_wechat_red_package_tab p,
+		pay_promotion_core_activity_tab a 
+		where
+		a.activity_no = p.activity_no
+		and
+        now() <![CDATA[>=]]> a.effc_time and now() <![CDATA[<=]]>  a.expired_time
+		and
+		(a.status='2')
+		and
+		(a.scene = '1' and (#{params.trans_type} = '2' or #{params.trans_type} =
+		'3'))
+		and
+		(
+		((a.app_id is not null and a.app_id <![CDATA[<>]]> '') and a.app_id like concat('%', #{params.app_id}, '%'))
+		or (((a.app_id = null or a.app_id = '') and (a.platform_type = '1' or a.platform_type = '2')) and a.platform_type = #{params.req_platform_type})
+		or (((a.app_id = null or a.app_id = '') and (a.platform_type = null or a.platform_type = '')) and 1=1)
+		)
+		and
+		(a.rule_type = '1' and #{params.amount} <![CDATA[>=]]> a.rule_param)
+		and
+		a.limited_quantity <![CDATA[>]]> (select count(*) from pay_promotion_core_wechat_red_package_tab c where c.activity_no =
+		a.activity_no and c.wechat_open_id = #{params.wechat_open_id})
+		and
+		(p.status='0')
+		group by a.activity_no
+		
+	</select>
+    
+</mapper>

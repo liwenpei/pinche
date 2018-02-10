@@ -1,0 +1,31 @@
+package com.project.xxx.controller;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.project.xxx.common.Convert;
+import com.project.xxx.core.IUserService;
+
+@Controller
+public class PassengerController {
+
+	@Resource
+	private IUserService userService;
+	
+	@RequestMapping("user_query.do")
+	public String queryPublish(HttpServletRequest request, Model model) {
+		boolean isAuthorized = Convert.objToBoolean(request.getSession().getAttribute("isAuthorized"));
+		if (!isAuthorized) {
+			return "redirect:login.jsp";
+		}
+		List list = userService.selectAllData();
+		model.addAttribute("list", list);
+		return "user";
+	}
+}

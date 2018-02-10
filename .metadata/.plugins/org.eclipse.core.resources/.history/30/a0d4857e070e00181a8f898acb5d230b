@@ -1,0 +1,97 @@
+var prefix = "publish_";
+var query_req_url = prefix + "query.do";
+var detail_req_url = prefix + "detail.do";
+var edit_view_req_url = prefix + "editView.do";
+var edit_req_url = prefix + "edit.do";
+var deleteCard_req_url = prefix + "delete.do";
+
+var query = function() {
+	$('#queryForm').attr("action",query_req_url);
+	$('#queryForm').submit();
+};
+
+var view = function(xtsmCplc, aid) {
+	$("#xTsmCplc").val(xtsmCplc);
+	$("#aid").val(aid);
+	$('#queryForm').attr("action",detail_req_url);
+	$('#queryForm').submit();
+};
+
+var editView= function(xtsmCplc, aid) {
+	$("#xTsmCplc").val(xtsmCplc);
+	$("#aid").val(aid);
+	$('#queryForm').attr("action",edit_view_req_url);
+	$('#queryForm').submit();
+};
+
+var edit = function() {
+	$('#editForm').attr("action",edit_req_url);
+	$('#editForm').submit();
+}
+
+var deleteCard = function(xtsmCplc, aid) {
+	$("#xTsmCplc").val(xtsmCplc);
+	$("#aid").val(aid);
+	var formData = new FormData();
+	formData.append("xTsmCplc", xtsmCplc);
+	formData.append("aid", aid);
+	
+	var d = dialog({
+	    content: "确定删除吗？",
+	    button: [
+	             {
+	                 value: "确定",
+	                 callback: function(){
+	                	 $.ajax({  
+	             	        url : deleteCard_req_url,  
+	             	        type : 'POST',  
+	             	        async: true, //设定同步请求，非异步请求
+	             	        data : formData, 
+	             	        contentType: false,
+	             	        processData: false,  
+	             	        success : function(responseStr) {   
+	             	        	
+	             	        	if(responseStr =="0"){
+	             	        		show_result_dialog("操作成功");
+	             	        	}else{
+	             	        		show_result_dialog("操作失败"+JSON.stringify(responseStr));
+	             	        	}
+	             	        	
+	             	        },  
+	             	        error : function(responseStr) {  
+	             	        	show_result_dialog("操作失败"+JSON.stringify(responseStr));
+	             	        }  
+	             	    });
+	                 },
+	                 autofocus: true
+	             },
+	             {
+	                 value: '取消'
+	             }
+	         ]
+	});
+	d.show();
+	
+	 
+};
+
+var show_result_dialog = function(message){
+	var d = dialog({
+	    content:  message,
+	    button: [
+	             {
+	                 value: "确定",
+	                 callback: function(){
+	                	 query();
+	                 },
+	                 autofocus: true
+	             },
+	             {
+	                 value: '取消'
+	             }
+	         ]
+	});
+	d.show();
+}
+
+

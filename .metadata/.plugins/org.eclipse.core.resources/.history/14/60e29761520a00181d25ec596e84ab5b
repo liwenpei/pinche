@@ -1,0 +1,10 @@
+package com.project.xxx.common.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.gionee.common.controller.AbsCommonController;
+
+public abstract class AbsController extends AbsCommonController<HttpServletRequest, HttpServletResponse>{
+
+}

@@ -1,0 +1,5 @@
+package com.project.xxx.common.controller;
+
+public class AbsController {
+
+}

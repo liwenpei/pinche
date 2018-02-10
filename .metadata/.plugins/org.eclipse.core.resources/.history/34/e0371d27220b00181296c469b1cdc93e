@@ -1,0 +1,37 @@
+package com.project.xxx.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.project.xxx.core.IPublishService;
+import com.project.xxx.core.models.Manager;
+
+@Controller
+public class Home {
+
+	@Resource
+	private IPublishService publishService;
+	
+	@RequestMapping("home.do")
+	public String login(HttpServletRequest request,Model model) {
+		boolean isAuthorized = Boolean.parseBoolean(request.getParameter("isAuthorized"));
+		if(!isAuthorized){
+			return "unauthorized";
+		}
+		List list = publishService.selectAllData();
+		model.addAttribute("list", list);
+		if(manager != null){
+			return "home";	
+		}else{
+			return "error";
+		}
+		
+	}
+}

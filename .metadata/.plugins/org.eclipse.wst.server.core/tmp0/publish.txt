@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Sat Feb 10 11:06:59 CST 2018
+org.eclipse.jst.j2ee.server\:storm=C\:\\Program Files\\Java\\apache-tomcat-7.0.69\\wtpwebapps\\storm
+org.eclipse.jst.j2ee.server\:/binary\:C\:\\Users\\Administrator\\.m2\\repository\\org\\springframework\\spring-web\\4.0.2.RELEASE\\spring-web-4.0.2.RELEASE.jar=C\:\\Program Files\\Java\\apache-tomcat-7.0.69\\wtpwebapps\\storm\\WEB-INF\\lib\\spring-web-4.0.2.RELEASE.jar

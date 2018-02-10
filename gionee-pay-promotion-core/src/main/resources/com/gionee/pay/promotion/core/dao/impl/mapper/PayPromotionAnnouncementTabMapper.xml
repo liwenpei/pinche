@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gionee.pay.promotion.core.dao.mapper.PayPromotionAnnouncementTabMapper" >
+  <resultMap id="BaseResultMap" type="com.gionee.pay.promotion.core.vo.models.PayPromotionAnnouncementTab" >
+    <id column="announce_id" property="announce_id" jdbcType="INTEGER" />
+    <result column="announce_name" property="announce_name" jdbcType="VARCHAR" />
+    <result column="platform_type" property="platform_type" jdbcType="VARCHAR" />
+    <result column="app_id" property="app_id" jdbcType="VARCHAR" />
+    <result column="slogan" property="slogan" jdbcType="VARCHAR" />
+    <result column="pic_url" property="pic_url" jdbcType="VARCHAR" />
+    <result column="announce_content" property="announce_content" jdbcType="VARCHAR" />
+    <result column="announce_content_url" property="announce_content_url" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="effc_time" property="effc_time" jdbcType="TIMESTAMP" />
+    <result column="expired_time" property="expired_time" jdbcType="TIMESTAMP" />
+    <result column="create_date" property="create_date" jdbcType="DATE" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="last_upd_time" property="last_upd_time" jdbcType="TIMESTAMP" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="auditor" property="auditor" jdbcType="VARCHAR" />
+   </resultMap>
+  <sql id="Base_Column_List" >
+    announce_id, announce_name, platform_type, app_id, slogan, pic_url, announce_content, 
+    announce_content_url, status, effc_time, expired_time, create_date, create_time, 
+    last_upd_time, operator, auditor
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from pay_promotion_announcement_tab
+    where announce_id = #{announce_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from pay_promotion_announcement_tab
+    where announce_id = #{announce_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionAnnouncementTab" >
+    insert into pay_promotion_announcement_tab (announce_id, announce_name, platform_type, 
+      app_id, slogan, pic_url, 
+      announce_content, announce_content_url, 
+      status, effc_time, expired_time, 
+      create_date, create_time, last_upd_time, 
+      operator, auditor)
+    values (#{announce_id,jdbcType=INTEGER}, #{announce_name,jdbcType=VARCHAR}, #{platform_type,jdbcType=VARCHAR}, 
+      #{app_id,jdbcType=VARCHAR}, #{slogan,jdbcType=VARCHAR}, #{pic_url,jdbcType=VARCHAR}, 
+      #{announce_content,jdbcType=VARCHAR}, #{announce_content_url,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{effc_time,jdbcType=TIMESTAMP}, #{expired_time,jdbcType=TIMESTAMP}, 
+      #{create_date,jdbcType=DATE}, #{create_time,jdbcType=TIMESTAMP}, #{last_upd_time,jdbcType=TIMESTAMP}, 
+      #{operator,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionAnnouncementTab" >
+    insert into pay_promotion_announcement_tab
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="announce_id != null" >
+        announce_id,
+      </if>
+      <if test="announce_name != null" >
+        announce_name,
+      </if>
+      <if test="platform_type != null" >
+        platform_type,
+      </if>
+      <if test="app_id != null" >
+        app_id,
+      </if>
+      <if test="slogan != null" >
+        slogan,
+      </if>
+      <if test="pic_url != null" >
+        pic_url,
+      </if>
+      <if test="announce_content != null" >
+        announce_content,
+      </if>
+      <if test="announce_content_url != null" >
+        announce_content_url,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="effc_time != null" >
+        effc_time,
+      </if>
+      <if test="expired_time != null" >
+        expired_time,
+      </if>
+      <if test="create_date != null" >
+        create_date,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="last_upd_time != null" >
+        last_upd_time,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="auditor != null" >
+        auditor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="announce_id != null" >
+        #{announce_id,jdbcType=INTEGER},
+      </if>
+      <if test="announce_name != null" >
+        #{announce_name,jdbcType=VARCHAR},
+      </if>
+      <if test="platform_type != null" >
+        #{platform_type,jdbcType=VARCHAR},
+      </if>
+      <if test="app_id != null" >
+        #{app_id,jdbcType=VARCHAR},
+      </if>
+      <if test="slogan != null" >
+        #{slogan,jdbcType=VARCHAR},
+      </if>
+      <if test="pic_url != null" >
+        #{pic_url,jdbcType=VARCHAR},
+      </if>
+      <if test="announce_content != null" >
+        #{announce_content,jdbcType=VARCHAR},
+      </if>
+      <if test="announce_content_url != null" >
+        #{announce_content_url,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="effc_time != null" >
+        #{effc_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expired_time != null" >
+        #{expired_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_date != null" >
+        #{create_date,jdbcType=DATE},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_upd_time != null" >
+        #{last_upd_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null" >
+        #{auditor,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionAnnouncementTab" >
+    update pay_promotion_announcement_tab
+    <set >
+      <if test="announce_name != null" >
+        announce_name = #{announce_name,jdbcType=VARCHAR},
+      </if>
+      <if test="platform_type != null" >
+        platform_type = #{platform_type,jdbcType=VARCHAR},
+      </if>
+      <if test="app_id != null" >
+        app_id = #{app_id,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="slogan != null" >
+        slogan = #{slogan,jdbcType=VARCHAR},
+      </if>
+      <if test="pic_url != null" >
+        pic_url = #{pic_url,jdbcType=VARCHAR},
+      </if>
+      <if test="announce_content != null" >
+        announce_content = #{announce_content,jdbcType=VARCHAR},
+      </if>
+      <if test="announce_content_url != null" >
+        announce_content_url = #{announce_content_url,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="effc_time != null" >
+        effc_time = #{effc_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expired_time != null" >
+        expired_time = #{expired_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_date != null" >
+        create_date = #{create_date,jdbcType=DATE},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_upd_time != null" >
+        last_upd_time = #{last_upd_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null" >
+        auditor = #{auditor,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where announce_id = #{announce_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gionee.pay.promotion.core.vo.models.PayPromotionAnnouncementTab" >
+    update pay_promotion_announcement_tab
+    set announce_name = #{announce_name,jdbcType=VARCHAR},
+      platform_type = #{platform_type,jdbcType=VARCHAR},
+      app_id = #{app_id,jdbcType=VARCHAR},
+      slogan = #{slogan,jdbcType=VARCHAR},
+      pic_url = #{pic_url,jdbcType=VARCHAR},
+      announce_content = #{announce_content,jdbcType=VARCHAR},
+      announce_content_url = #{announce_content_url,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      effc_time = #{effc_time,jdbcType=TIMESTAMP},
+      expired_time = #{expired_time,jdbcType=TIMESTAMP},
+      create_date = #{create_date,jdbcType=DATE},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      last_upd_time = #{last_upd_time,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      auditor = #{auditor,jdbcType=VARCHAR}
+    where announce_id = #{announce_id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectByAllParams" resultType="list"
+	resultMap="BaseResultMap">
+	select 
+	<include refid="Base_Column_List" />
+        from  pay_promotion_announcement_tab 
+        where 1=1
+        <if test="params.announce_id != null and params.announce_id !='' " >
+         and announce_id = #{params.announce_id}
+        </if>
+      <if test="params.announce_name != null and params.announce_name !='' " >
+         and announce_name = #{params.announce_name}
+        </if>
+      <if test="params.platform_type != null" >
+         and platform_type = #{params.platform_type}
+        </if>
+      <if test="params.auditor != null and params.auditor !='' " >
+         and auditor = #{params.auditor}
+        </if>
+      <if test="params.status != null and params.status !='' " >
+         and status = #{params.status}
+        </if>
+       <if test="params.operator != null and params.operator !='' " >
+         and operator = #{params.operator}
+        </if>
+         
+         <if test="params.app_id != null and params.app_id !='' " >
+          and app_id  like concat('%', #{params.app_id}, '%') 
+        </if>
+        <choose>
+            <when test="order_param != null">
+                order by ${order_param}
+            </when>
+        </choose>
+    </select>
+    
+      <select id="selectValueByAllParams" resultType="list"
+	resultMap="BaseResultMap">
+	select 
+	<include refid="Base_Column_List" />
+        from  pay_promotion_announcement_tab 
+        where 1=1 and   <![CDATA[now() >= effc_time and now() <=  expired_time]]>
+        <if test="params.announce_id != null and params.announce_id !='' " >
+         and announce_id = #{params.announce_id}
+        </if>
+      <if test="params.announce_name != null and params.announce_name !='' " >
+         and announce_name = #{params.announce_name}
+        </if>
+      <if test="params.platform_type != null" >
+         and platform_type = #{params.platform_type}
+        </if>
+      <if test="params.auditor != null and params.auditor !='' " >
+         and auditor = #{params.auditor}
+        </if>
+      <if test="params.status != null and params.status !='' " >
+         and status = #{params.status}
+        </if>
+       <if test="params.operator != null and params.operator !='' " >
+         and operator = #{params.operator}
+        </if>
+         
+         <if test="params.app_id != null and params.app_id !='' " >
+          and app_id  like concat('%', #{params.app_id}, '%') 
+        </if>
+        <choose>
+            <when test="order_param != null">
+                order by ${order_param}
+            </when>
+        </choose>
+    </select>
+    
+</mapper>

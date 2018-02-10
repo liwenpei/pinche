@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gionee.pay.promotion.core.dao.mapper.PayMerchantMapper" >
+  <resultMap id="BaseResultMap" type="com.gionee.pay.promotion.core.vo.models.PayMerchant" >
+    <id column="merchantID" property="merchantID" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="publicKey" property="publicKey" jdbcType="VARCHAR" />
+    <result column="privateKey" property="privateKey" jdbcType="VARCHAR" />
+    <result column="Status" property="status" jdbcType="INTEGER" />
+    <result column="CreateTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="notifyURL" property="notifyURL" jdbcType="VARCHAR" />
+    <result column="callbackURL" property="callbackURL" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="platformId" property="platformId" jdbcType="INTEGER" />
+    <result column="payType" property="payType" jdbcType="VARCHAR" />
+  </resultMap>
+ 
+  <sql id="Base_Column_List" >
+    merchantID, name, publicKey, privateKey, Status, CreateTime, notifyURL, callbackURL, 
+    type, platformId, payType
+  </sql>
+  <sql id="Blob_Column_List" >
+    alertEmail, alertSMS
+  </sql>
+ 
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from pay_merchant
+    where merchantID = #{merchantID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gionee.pay.promotion.core.vo.models.PayMerchant" >
+    insert into pay_merchant (merchantID, name, publicKey, 
+      privateKey, Status, CreateTime, 
+      notifyURL, callbackURL, type, 
+      platformId, payType, alertEmail, 
+      alertSMS)
+    values (#{merchantID,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{publicKey,jdbcType=VARCHAR}, 
+      #{privateKey,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{notifyURL,jdbcType=VARCHAR}, #{callbackURL,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{platformId,jdbcType=INTEGER}, #{payType,jdbcType=VARCHAR}, #{alertEmail,jdbcType=LONGVARCHAR}, 
+      #{alertSMS,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gionee.pay.promotion.core.vo.models.PayMerchant" >
+    insert into pay_merchant
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="merchantID != null" >
+        merchantID,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="publicKey != null" >
+        publicKey,
+      </if>
+      <if test="privateKey != null" >
+        privateKey,
+      </if>
+      <if test="status != null" >
+        Status,
+      </if>
+      <if test="createTime != null" >
+        CreateTime,
+      </if>
+      <if test="notifyURL != null" >
+        notifyURL,
+      </if>
+      <if test="callbackURL != null" >
+        callbackURL,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="platformId != null" >
+        platformId,
+      </if>
+      <if test="payType != null" >
+        payType,
+      </if>
+      <if test="alertEmail != null" >
+        alertEmail,
+      </if>
+      <if test="alertSMS != null" >
+        alertSMS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="merchantID != null" >
+        #{merchantID,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="publicKey != null" >
+        #{publicKey,jdbcType=VARCHAR},
+      </if>
+      <if test="privateKey != null" >
+        #{privateKey,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="notifyURL != null" >
+        #{notifyURL,jdbcType=VARCHAR},
+      </if>
+      <if test="callbackURL != null" >
+        #{callbackURL,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="platformId != null" >
+        #{platformId,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="alertEmail != null" >
+        #{alertEmail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="alertSMS != null" >
+        #{alertSMS,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gionee.pay.promotion.core.vo.models.PayMerchant" >
+    update pay_merchant
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="publicKey != null" >
+        publicKey = #{publicKey,jdbcType=VARCHAR},
+      </if>
+      <if test="privateKey != null" >
+        privateKey = #{privateKey,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="notifyURL != null" >
+        notifyURL = #{notifyURL,jdbcType=VARCHAR},
+      </if>
+      <if test="callbackURL != null" >
+        callbackURL = #{callbackURL,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="platformId != null" >
+        platformId = #{platformId,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        payType = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="alertEmail != null" >
+        alertEmail = #{alertEmail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="alertSMS != null" >
+        alertSMS = #{alertSMS,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where merchantID = #{merchantID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gionee.pay.promotion.core.vo.models.PayMerchant" >
+    update pay_merchant
+    set name = #{name,jdbcType=VARCHAR},
+      publicKey = #{publicKey,jdbcType=VARCHAR},
+      privateKey = #{privateKey,jdbcType=VARCHAR},
+      Status = #{status,jdbcType=INTEGER},
+      CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      notifyURL = #{notifyURL,jdbcType=VARCHAR},
+      callbackURL = #{callbackURL,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      platformId = #{platformId,jdbcType=INTEGER},
+      payType = #{payType,jdbcType=VARCHAR},
+      alertEmail = #{alertEmail,jdbcType=LONGVARCHAR},
+      alertSMS = #{alertSMS,jdbcType=LONGVARCHAR}
+    where merchantID = #{merchantID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gionee.pay.promotion.core.vo.models.PayMerchant" >
+    update pay_merchant
+    set name = #{name,jdbcType=VARCHAR},
+      publicKey = #{publicKey,jdbcType=VARCHAR},
+      privateKey = #{privateKey,jdbcType=VARCHAR},
+      Status = #{status,jdbcType=INTEGER},
+      CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      notifyURL = #{notifyURL,jdbcType=VARCHAR},
+      callbackURL = #{callbackURL,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      platformId = #{platformId,jdbcType=INTEGER},
+      payType = #{payType,jdbcType=VARCHAR}
+    where merchantID = #{merchantID,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAllListByParams" resultMap="BaseResultMap" resultType="list">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from pay_merchant
+  	where 1=1 
+  	<if test="params.merchantID != null">
+  		and merchantID = #{params.merchantID}
+  	</if>
+  	<if test="params.platformId != null">
+  		and platformId = #{params.platformId}
+  	</if>
+  	<if test="params.name != null and params.name != '' ">
+  		and name = #{params.name}
+  	</if>
+  	<if test="params.status != null and params.status != '' ">
+  		and status = #{params.status}
+  	</if>
+  	<if test="params.type != null and params.type != '' ">
+  		and type = #{params.type}
+  	</if>
+  	<if test="params.platformId != null and params.platformId != '' ">
+  		and platformId = #{params.platformId}
+  	</if>
+  	<choose>
+            <when test="order_param != null">
+                order by ${order_param}
+            </when>
+        </choose>
+  </select>
+</mapper>

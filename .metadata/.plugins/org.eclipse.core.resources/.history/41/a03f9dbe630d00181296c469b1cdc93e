@@ -1,0 +1,7 @@
+package com.project.xxx.core;  
+  
+import com.project.xxx.core.models.User;  
+  
+public interface IUserService {  
+    public User getUserById(int userId);  
+}  
